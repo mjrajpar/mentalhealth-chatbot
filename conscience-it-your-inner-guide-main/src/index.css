@@ -1,0 +1,518 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --radius: 1rem;
+  }
+
+  /* ============ COLOR SCHEMES ============ */
+
+  /* Dark Blue (default) */
+  :root,
+  [data-color-scheme="dark-blue"] {
+    --background: 210 35% 12%;
+    --foreground: 200 20% 95%;
+    --card: 210 40% 18%;
+    --card-foreground: 200 20% 95%;
+    --popover: 210 40% 16%;
+    --popover-foreground: 200 20% 95%;
+    --primary: 195 80% 55%;
+    --primary-foreground: 210 35% 10%;
+    --secondary: 210 40% 22%;
+    --secondary-foreground: 200 20% 85%;
+    --muted: 210 30% 20%;
+    --muted-foreground: 200 15% 60%;
+    --accent: 15 75% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 30% 25%;
+    --input: 210 35% 20%;
+    --ring: 195 80% 55%;
+    --chat-user: 195 80% 55%;
+    --chat-ai: 210 40% 22%;
+    --chat-user-text: 210 35% 10%;
+    --chat-ai-text: 200 20% 95%;
+    --sidebar-background: 210 40% 10%;
+    --sidebar-foreground: 200 20% 75%;
+    --sidebar-primary: 195 80% 55%;
+    --sidebar-primary-foreground: 210 35% 10%;
+    --sidebar-accent: 210 35% 18%;
+    --sidebar-accent-foreground: 200 20% 95%;
+    --sidebar-border: 210 30% 20%;
+    --sidebar-ring: 195 80% 55%;
+    --calm-sage: 160 50% 45%;
+    --calm-sage-light: 160 30% 25%;
+    --calm-lavender: 270 40% 65%;
+    --calm-lavender-light: 270 30% 25%;
+    --calm-coral: 15 70% 60%;
+    --calm-coral-light: 15 40% 25%;
+    --calm-sky: 195 80% 55%;
+    --calm-sky-light: 195 50% 25%;
+    --calm-cream: 40 20% 20%;
+    --calm-mint: 165 40% 25%;
+  }
+
+  /* Lavender Theme */
+  [data-color-scheme="lavender"] {
+    --background: 270 30% 96%;
+    --foreground: 270 40% 15%;
+    --card: 270 30% 98%;
+    --card-foreground: 270 40% 15%;
+    --popover: 270 30% 98%;
+    --popover-foreground: 270 40% 15%;
+    --primary: 270 50% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 20% 90%;
+    --secondary-foreground: 270 40% 30%;
+    --muted: 270 20% 92%;
+    --muted-foreground: 270 20% 45%;
+    --accent: 320 50% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 20% 85%;
+    --input: 270 20% 92%;
+    --ring: 270 50% 60%;
+    --chat-user: 270 50% 60%;
+    --chat-ai: 270 20% 92%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 270 40% 15%;
+    --sidebar-background: 270 30% 94%;
+    --sidebar-foreground: 270 30% 35%;
+    --sidebar-primary: 270 50% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 20% 88%;
+    --sidebar-accent-foreground: 270 40% 15%;
+    --sidebar-border: 270 20% 85%;
+    --sidebar-ring: 270 50% 60%;
+  }
+
+  /* Coral Theme */
+  [data-color-scheme="coral"] {
+    --background: 20 30% 96%;
+    --foreground: 20 40% 15%;
+    --card: 20 30% 98%;
+    --card-foreground: 20 40% 15%;
+    --popover: 20 30% 98%;
+    --popover-foreground: 20 40% 15%;
+    --primary: 15 75% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 20 25% 90%;
+    --secondary-foreground: 20 40% 30%;
+    --muted: 20 20% 92%;
+    --muted-foreground: 20 20% 45%;
+    --accent: 340 60% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 20 20% 85%;
+    --input: 20 20% 92%;
+    --ring: 15 75% 55%;
+    --chat-user: 15 75% 55%;
+    --chat-ai: 20 20% 92%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 20 40% 15%;
+    --sidebar-background: 20 30% 94%;
+    --sidebar-foreground: 20 30% 35%;
+    --sidebar-primary: 15 75% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 20 25% 88%;
+    --sidebar-accent-foreground: 20 40% 15%;
+    --sidebar-border: 20 20% 85%;
+    --sidebar-ring: 15 75% 55%;
+  }
+
+  /* Nature Green Theme */
+  [data-color-scheme="green"] {
+    --background: 140 25% 96%;
+    --foreground: 140 40% 15%;
+    --card: 140 25% 98%;
+    --card-foreground: 140 40% 15%;
+    --popover: 140 25% 98%;
+    --popover-foreground: 140 40% 15%;
+    --primary: 150 55% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 140 20% 90%;
+    --secondary-foreground: 140 40% 30%;
+    --muted: 140 15% 92%;
+    --muted-foreground: 140 20% 45%;
+    --accent: 85 50% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 15% 85%;
+    --input: 140 15% 92%;
+    --ring: 150 55% 42%;
+    --chat-user: 150 55% 42%;
+    --chat-ai: 140 15% 92%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 140 40% 15%;
+    --sidebar-background: 140 25% 94%;
+    --sidebar-foreground: 140 30% 35%;
+    --sidebar-primary: 150 55% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 140 20% 88%;
+    --sidebar-accent-foreground: 140 40% 15%;
+    --sidebar-border: 140 15% 85%;
+    --sidebar-ring: 150 55% 42%;
+  }
+
+  /* Ocean Blue Theme */
+  [data-color-scheme="blue"] {
+    --background: 200 30% 96%;
+    --foreground: 200 40% 15%;
+    --card: 200 30% 98%;
+    --card-foreground: 200 40% 15%;
+    --popover: 200 30% 98%;
+    --popover-foreground: 200 40% 15%;
+    --primary: 200 80% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 200 25% 90%;
+    --secondary-foreground: 200 40% 30%;
+    --muted: 200 20% 92%;
+    --muted-foreground: 200 20% 45%;
+    --accent: 180 60% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 20% 85%;
+    --input: 200 20% 92%;
+    --ring: 200 80% 50%;
+    --chat-user: 200 80% 50%;
+    --chat-ai: 200 20% 92%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 200 40% 15%;
+    --sidebar-background: 200 30% 94%;
+    --sidebar-foreground: 200 30% 35%;
+    --sidebar-primary: 200 80% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 25% 88%;
+    --sidebar-accent-foreground: 200 40% 15%;
+    --sidebar-border: 200 20% 85%;
+    --sidebar-ring: 200 80% 50%;
+  }
+
+  /* Dark Purple Theme */
+  [data-color-scheme="dark-purple"] {
+    --background: 270 35% 10%;
+    --foreground: 270 20% 95%;
+    --card: 270 40% 15%;
+    --card-foreground: 270 20% 95%;
+    --popover: 270 40% 13%;
+    --popover-foreground: 270 20% 95%;
+    --primary: 280 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 40% 20%;
+    --secondary-foreground: 270 20% 85%;
+    --muted: 270 30% 18%;
+    --muted-foreground: 270 15% 60%;
+    --accent: 320 70% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 30% 22%;
+    --input: 270 35% 18%;
+    --ring: 280 70% 60%;
+    --chat-user: 280 70% 60%;
+    --chat-ai: 270 40% 20%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 270 20% 95%;
+    --sidebar-background: 270 40% 8%;
+    --sidebar-foreground: 270 20% 75%;
+    --sidebar-primary: 280 70% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 35% 16%;
+    --sidebar-accent-foreground: 270 20% 95%;
+    --sidebar-border: 270 30% 18%;
+    --sidebar-ring: 280 70% 60%;
+  }
+
+  /* Midnight Theme */
+  [data-color-scheme="midnight"] {
+    --background: 250 30% 8%;
+    --foreground: 250 20% 95%;
+    --card: 250 35% 12%;
+    --card-foreground: 250 20% 95%;
+    --popover: 250 35% 10%;
+    --popover-foreground: 250 20% 95%;
+    --primary: 260 60% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 250 35% 18%;
+    --secondary-foreground: 250 20% 85%;
+    --muted: 250 25% 15%;
+    --muted-foreground: 250 15% 55%;
+    --accent: 290 60% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 250 25% 18%;
+    --input: 250 30% 14%;
+    --ring: 260 60% 55%;
+    --chat-user: 260 60% 55%;
+    --chat-ai: 250 35% 18%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 250 20% 95%;
+    --sidebar-background: 250 35% 6%;
+    --sidebar-foreground: 250 20% 70%;
+    --sidebar-primary: 260 60% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 30% 14%;
+    --sidebar-accent-foreground: 250 20% 95%;
+    --sidebar-border: 250 25% 15%;
+    --sidebar-ring: 260 60% 55%;
+  }
+
+  /* Dark Forest Theme */
+  [data-color-scheme="dark-forest"] {
+    --background: 150 35% 8%;
+    --foreground: 150 20% 95%;
+    --card: 150 40% 12%;
+    --card-foreground: 150 20% 95%;
+    --popover: 150 40% 10%;
+    --popover-foreground: 150 20% 95%;
+    --primary: 160 60% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 150 40% 18%;
+    --secondary-foreground: 150 20% 85%;
+    --muted: 150 30% 15%;
+    --muted-foreground: 150 15% 55%;
+    --accent: 85 55% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 150 30% 18%;
+    --input: 150 35% 14%;
+    --ring: 160 60% 45%;
+    --chat-user: 160 60% 45%;
+    --chat-ai: 150 40% 18%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 150 20% 95%;
+    --sidebar-background: 150 40% 6%;
+    --sidebar-foreground: 150 20% 70%;
+    --sidebar-primary: 160 60% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 35% 14%;
+    --sidebar-accent-foreground: 150 20% 95%;
+    --sidebar-border: 150 30% 15%;
+    --sidebar-ring: 160 60% 45%;
+  }
+
+  /* Rose Theme */
+  [data-color-scheme="rose"] {
+    --background: 350 30% 96%;
+    --foreground: 350 40% 15%;
+    --card: 350 30% 98%;
+    --card-foreground: 350 40% 15%;
+    --popover: 350 30% 98%;
+    --popover-foreground: 350 40% 15%;
+    --primary: 350 70% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 350 20% 90%;
+    --secondary-foreground: 350 40% 30%;
+    --muted: 350 15% 92%;
+    --muted-foreground: 350 20% 45%;
+    --accent: 320 60% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 350 15% 85%;
+    --input: 350 15% 92%;
+    --ring: 350 70% 55%;
+    --chat-user: 350 70% 55%;
+    --chat-ai: 350 15% 92%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 350 40% 15%;
+    --sidebar-background: 350 30% 94%;
+    --sidebar-foreground: 350 30% 35%;
+    --sidebar-primary: 350 70% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 350 20% 88%;
+    --sidebar-accent-foreground: 350 40% 15%;
+    --sidebar-border: 350 15% 85%;
+    --sidebar-ring: 350 70% 55%;
+  }
+
+  /* Sunset Theme */
+  [data-color-scheme="sunset"] {
+    --background: 30 35% 95%;
+    --foreground: 30 40% 15%;
+    --card: 30 35% 98%;
+    --card-foreground: 30 40% 15%;
+    --popover: 30 35% 98%;
+    --popover-foreground: 30 40% 15%;
+    --primary: 25 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 25% 90%;
+    --secondary-foreground: 30 40% 30%;
+    --muted: 30 20% 92%;
+    --muted-foreground: 30 20% 45%;
+    --accent: 350 70% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 20% 85%;
+    --input: 30 20% 92%;
+    --ring: 25 85% 55%;
+    --chat-user: 25 85% 55%;
+    --chat-ai: 30 20% 92%;
+    --chat-user-text: 0 0% 100%;
+    --chat-ai-text: 30 40% 15%;
+    --sidebar-background: 30 35% 93%;
+    --sidebar-foreground: 30 30% 35%;
+    --sidebar-primary: 25 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 25% 88%;
+    --sidebar-accent-foreground: 30 40% 15%;
+    --sidebar-border: 30 20% 85%;
+    --sidebar-ring: 25 85% 55%;
+  }
+
+  /* ============ BACKGROUND THEMES ============ */
+
+  [data-background="dark"] body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23234' fill-opacity='0.15'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  [data-background="gradient"] body {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.15) 0%, hsl(var(--accent) / 0.15) 100%);
+  }
+
+  [data-background="nature"] body {
+    background: linear-gradient(180deg, hsl(150 40% 20%) 0%, hsl(180 30% 15%) 50%, hsl(200 35% 12%) 100%);
+  }
+
+  [data-background="ocean"] body {
+    background: linear-gradient(180deg, hsl(200 50% 25%) 0%, hsl(210 45% 18%) 50%, hsl(220 40% 12%) 100%);
+  }
+
+  [data-background="sunset"] body {
+    background: linear-gradient(180deg, hsl(30 60% 25%) 0%, hsl(350 50% 20%) 50%, hsl(280 40% 15%) 100%);
+  }
+
+  [data-background="stars"] body {
+    background: 
+      radial-gradient(ellipse at 20% 30%, hsl(260 50% 15% / 0.8) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, hsl(200 50% 12% / 0.8) 0%, transparent 50%),
+      hsl(240 30% 8%);
+  }
+
+  [data-background="minimal"] body {
+    background: hsl(var(--background));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23234' fill-opacity='0.15'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold;
+  }
+}
+
+@layer components {
+  .chat-bubble-user {
+    @apply bg-chat-user text-chat-user-text rounded-2xl rounded-tr-sm px-4 py-3 font-medium;
+  }
+
+  .chat-bubble-ai {
+    @apply bg-chat-ai/80 text-chat-ai-text rounded-2xl rounded-tl-sm px-4 py-3 backdrop-blur-sm border border-border/50;
+  }
+
+  .card-calm {
+    @apply bg-card/80 rounded-xl border border-border/50 shadow-lg backdrop-blur-sm;
+  }
+
+  .btn-calm {
+    @apply bg-primary text-primary-foreground rounded-full px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+
+  .input-calm {
+    @apply bg-input border border-border rounded-xl px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+  }
+
+  .nav-item {
+    @apply flex flex-col lg:flex-row items-center gap-1 lg:gap-3 px-2 lg:px-4 py-3 rounded-xl text-sidebar-foreground transition-all duration-200 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-xs lg:text-sm;
+  }
+
+  .nav-item-active {
+    @apply bg-sidebar-primary/10 text-sidebar-primary;
+  }
+
+  /* Glass effect for cards */
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-md border border-border/30 rounded-2xl;
+  }
+
+  /* Crisis banner */
+  .crisis-banner {
+    @apply bg-card/80 backdrop-blur-sm border-b border-border/50 px-4 py-2 flex items-center justify-between;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-pulse-gentle {
+    animation: pulseGentle 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseGentle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}

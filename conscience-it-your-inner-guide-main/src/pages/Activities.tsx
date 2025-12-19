@@ -1,0 +1,175 @@
+import { useState } from "react";
+import Layout from "@/components/Layout";
+import { Wind, Heart, Footprints, Moon, Sun, Target, Calendar, Lightbulb } from "lucide-react";
+
+const activities = [
+  {
+    id: 1,
+    title: "5-Minute Breathing Exercise",
+    description: "Practice deep breathing to reduce anxiety and promote calmness",
+    duration: "5 min",
+    icon: Wind,
+    tags: ["Reduces stress", "Improves focus"],
+    completed: false,
+  },
+  {
+    id: 2,
+    title: "Gratitude Journaling",
+    description: "Write down three things you're grateful for today",
+    duration: "10 min",
+    icon: Heart,
+    tags: ["Positive mindset", "Self-awareness"],
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "Mindful Walk",
+    description: "Take a walk while focusing on your surroundings and sensations",
+    duration: "15 min",
+    icon: Footprints,
+    tags: ["Physical health", "Mental clarity"],
+    completed: false,
+  },
+  {
+    id: 4,
+    title: "Evening Reflection",
+    description: "Reflect on your day and identify moments of growth",
+    duration: "10 min",
+    icon: Moon,
+    tags: ["Self-awareness", "Growth mindset"],
+    completed: false,
+  },
+  {
+    id: 5,
+    title: "Morning Affirmations",
+    description: "Start your day with positive self-talk and intentions",
+    duration: "5 min",
+    icon: Sun,
+    tags: ["Confidence", "Positive outlook"],
+    completed: false,
+  },
+  {
+    id: 6,
+    title: "Body Scan Meditation",
+    description: "Progressive relaxation technique to release tension",
+    duration: "15 min",
+    icon: Target,
+    tags: ["Relaxation", "Body awareness"],
+    completed: false,
+  },
+];
+
+const Activities = () => {
+  const [activeTab, setActiveTab] = useState<"activities" | "schedule">("activities");
+  const [completedActivities, setCompletedActivities] = useState<number[]>([]);
+
+  const handleComplete = (id: number) => {
+    if (completedActivities.includes(id)) {
+      setCompletedActivities(completedActivities.filter((actId) => actId !== id));
+    } else {
+      setCompletedActivities([...completedActivities, id]);
+    }
+  };
+
+  return (
+    <Layout>
+      <div className="p-4 lg:p-6 space-y-6 overflow-auto">
+        <div>
+          <h2 className="font-display text-2xl font-bold text-foreground">Therapy Activities</h2>
+          <p className="text-muted-foreground text-sm">AI-curated activities and schedules for your wellness journey</p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => setActiveTab("activities")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              activeTab === "activities"
+                ? "bg-primary text-primary-foreground"
+                : "bg-card/80 text-foreground hover:bg-card"
+            }`}
+          >
+            <Lightbulb className="w-4 h-4" />
+            Activities
+          </button>
+          <button
+            onClick={() => setActiveTab("schedule")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              activeTab === "schedule"
+                ? "bg-primary text-primary-foreground"
+                : "bg-card/80 text-foreground hover:bg-card"
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            Daily Schedule
+          </button>
+        </div>
+
+        {/* Progress */}
+        <div className="glass-card p-4">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-foreground font-medium">Today's Progress</span>
+            <span className="text-muted-foreground text-sm">
+              {completedActivities.length} / {activities.length} completed
+            </span>
+          </div>
+          <div className="w-full bg-muted rounded-full h-2">
+            <div
+              className="bg-primary h-2 rounded-full transition-all duration-300"
+              style={{ width: `${(completedActivities.length / activities.length) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Activities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {activities.map((activity) => {
+            const Icon = activity.icon;
+            const isCompleted = completedActivities.includes(activity.id);
+
+            return (
+              <div key={activity.id} className="glass-card p-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-semibold text-foreground">{activity.title}</h3>
+                      <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded-full">
+                        {activity.duration}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-3">{activity.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {activity.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2 py-1 rounded-full bg-card border border-border/50 text-muted-foreground"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => handleComplete(activity.id)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                        isCompleted
+                          ? "bg-calm-sage/20 text-calm-sage"
+                          : "bg-primary text-primary-foreground hover:bg-primary/90"
+                      }`}
+                    >
+                      {isCompleted ? "✓ Completed" : "Mark as Complete"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default Activities;
